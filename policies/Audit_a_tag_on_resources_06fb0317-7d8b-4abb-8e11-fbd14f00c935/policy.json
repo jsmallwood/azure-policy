@@ -1,0 +1,36 @@
+{
+ "properties": {
+  "displayName": "Audit a tag on resources",
+  "policyType": "Custom",
+  "mode": "Indexed",
+  "description": "Enforces existence of a tag. Does not apply to resource groups.",
+  "metadata": {
+   "category": "Tags",
+   "createdBy": "0657932d-6322-4410-b062-c9f117e63087",
+   "createdOn": "2021-04-30T14:04:03.2361233Z",
+   "updatedBy": null,
+   "updatedOn": null
+  },
+  "parameters": {
+   "tagName": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Tag Name",
+     "description": "Name of the tag, such as 'environment'"
+    }
+   }
+  },
+  "policyRule": {
+   "if": {
+    "field": "[concat('tags[', parameters('tagName'), ']')]",
+    "exists": "false"
+   },
+   "then": {
+    "effect": "audit"
+   }
+  }
+ },
+ "id": "/providers/Microsoft.Management/managementGroups/a8b7290b-8363-4333-81d5-041ac3b2c81c/providers/Microsoft.Authorization/policyDefinitions/06fb0317-7d8b-4abb-8e11-fbd14f00c935",
+ "type": "Microsoft.Authorization/policyDefinitions",
+ "name": "06fb0317-7d8b-4abb-8e11-fbd14f00c935"
+}

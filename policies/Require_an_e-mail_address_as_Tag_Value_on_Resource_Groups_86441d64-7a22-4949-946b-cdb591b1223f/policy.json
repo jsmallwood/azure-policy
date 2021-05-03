@@ -1,0 +1,59 @@
+{
+ "properties": {
+  "displayName": "Require an e-mail address as Tag Value on Resource Groups",
+  "policyType": "Custom",
+  "mode": "All",
+  "description": "Enforces a required tag and its value is a email address. Does not apply to resource groups.",
+  "metadata": {
+   "category": "Tags",
+   "createdBy": "0657932d-6322-4410-b062-c9f117e63087",
+   "createdOn": "2021-04-27T18:17:23.9366699Z",
+   "updatedBy": null,
+   "updatedOn": null
+  },
+  "parameters": {
+   "tagName": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Tag Name",
+     "description": "Name of the tag, such as 'environment'"
+    }
+   },
+   "effectType": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Effect Type",
+     "description": "Effect Type"
+    }
+   }
+  },
+  "policyRule": {
+   "if": {
+    "allOf": [
+     {
+      "field": "type",
+      "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+     },
+     {
+      "field": "[concat('tags[', parameters('tagName'), ']')]",
+      "notContains": ".com"
+     },
+     {
+      "field": "[concat('tags[', parameters('tagName'), ']')]",
+      "notContains": ".net"
+     },
+     {
+      "field": "[concat('tags[', parameters('tagName'), ']')]",
+      "notContains": ".org"
+     }
+    ]
+   },
+   "then": {
+    "effect": "[parameters('effectType')]"
+   }
+  }
+ },
+ "id": "/providers/Microsoft.Management/managementGroups/a8b7290b-8363-4333-81d5-041ac3b2c81c/providers/Microsoft.Authorization/policyDefinitions/86441d64-7a22-4949-946b-cdb591b1223f",
+ "type": "Microsoft.Authorization/policyDefinitions",
+ "name": "86441d64-7a22-4949-946b-cdb591b1223f"
+}

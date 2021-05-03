@@ -1,0 +1,459 @@
+{
+ "properties": {
+  "displayName": "CUSTOM - Tag Initiative",
+  "policyType": "Custom",
+  "description": "This initiative handles the propagation of certain tags from the Management Group / Subscription down to the resources.",
+  "metadata": {
+   "category": "Tags",
+   "version": "1.0.0.0",
+   "createdBy": "0657932d-6322-4410-b062-c9f117e63087",
+   "createdOn": "2021-04-27T18:42:01.5246233Z",
+   "updatedBy": "0657932d-6322-4410-b062-c9f117e63087",
+   "updatedOn": "2021-04-30T15:13:25.3709165Z"
+  },
+  "parameters": {
+   "environmentTagName": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Environment Tag Name",
+     "description": null
+    },
+    "defaultValue": "Environment"
+   },
+   "stakeholderTagName": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Stakeholder Tag Name",
+     "description": null
+    },
+    "defaultValue": "Stakeholders"
+   },
+   "businessownerTagName": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Business Owner Tag Name",
+     "description": null
+    },
+    "defaultValue": "BusinessOwner"
+   },
+   "effectType": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Effect Type",
+     "description": null
+    },
+    "allowedValues": [
+     "audit",
+     "deny"
+    ],
+    "defaultValue": "audit"
+   },
+   "costcenterTagName": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Cost Center Tag Name",
+     "description": null
+    },
+    "defaultValue": "CostCenter"
+   },
+   "projectcostcenterTagName": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Project Cost Center Tag Name",
+     "description": null
+    },
+    "defaultValue": "PmCostCenter"
+   },
+   "applicationTagName": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Application Tag Name",
+     "description": null
+    },
+    "defaultValue": "Application"
+   },
+   "ciidTagName": {
+    "type": "string",
+    "metadata": {
+     "displayName": "CIID Tag Name",
+     "description": "Configuration Item ID Tag Name"
+    },
+    "defaultValue": "CIID"
+   },
+   "servicenowTagName": {
+    "type": "string",
+    "metadata": {
+     "displayName": "ServiceNow Tag Name",
+     "description": "Tag name for ServiceNow Tickets"
+    },
+    "defaultValue": "ServiceNowRequest"
+   },
+   "environmentTagValue": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Environment Tag Value",
+     "description": null
+    },
+    "allowedValues": [
+     "Dev",
+     "Prod",
+     "TestMajor",
+     "TestMinor",
+     "NPE",
+     "INF",
+     "POC"
+    ],
+    "defaultValue": "Prod"
+   },
+   "createdbyTagName": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Created By Tag Name",
+     "description": null
+    },
+    "defaultValue": "CreatedBy"
+   },
+   "createdondateTagName": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Created On Date Tag Name"
+    },
+    "defaultValue": "CreatedOnDate"
+   }
+  },
+  "policyDefinitions": [
+   {
+    "policyDefinitionReferenceId": "Inherit Environment Tag from the Subscription if missing",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/40df99da-1232-49b1-a39a-6da8d878f469",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('environmentTagName')]"
+     }
+    },
+    "groupNames": [
+     "Tag - Environment"
+    ]
+   },
+   {
+    "policyDefinitionReferenceId": "Inherit Environment Tag from the Resource Group if missing",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ea3f2387-9b95-492a-a190-fcdc54f7b070",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('environmentTagName')]"
+     }
+    },
+    "groupNames": [
+     "Tag - Environment"
+    ]
+   },
+   {
+    "policyDefinitionReferenceId": "Require an e-mail address for Stakeholder Tag on Resource Groups",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/a8b7290b-8363-4333-81d5-041ac3b2c81c/providers/Microsoft.Authorization/policyDefinitions/86441d64-7a22-4949-946b-cdb591b1223f",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('stakeholderTagName')]"
+     },
+     "effectType": {
+      "value": "[parameters('effectType')]"
+     }
+    },
+    "groupNames": [
+     "Tag - Stakeholder"
+    ]
+   },
+   {
+    "policyDefinitionReferenceId": "Inherit Stakeholder tag from the Resource Group if Missing",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ea3f2387-9b95-492a-a190-fcdc54f7b070",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('stakeholderTagName')]"
+     }
+    },
+    "groupNames": [
+     "Tag - Stakeholder"
+    ]
+   },
+   {
+    "policyDefinitionReferenceId": "Require an e-mail address for BusinessOwner Tag on Resource Groups",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/a8b7290b-8363-4333-81d5-041ac3b2c81c/providers/Microsoft.Authorization/policyDefinitions/86441d64-7a22-4949-946b-cdb591b1223f",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('businessownerTagName')]"
+     },
+     "effectType": {
+      "value": "[parameters('effectType')]"
+     }
+    },
+    "groupNames": [
+     "Tag - BusinessOwner"
+    ]
+   },
+   {
+    "policyDefinitionReferenceId": "Inherit BusinessOwner tag from the Resource Group if Missing",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ea3f2387-9b95-492a-a190-fcdc54f7b070",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('businessownerTagName')]"
+     }
+    },
+    "groupNames": [
+     "Tag - BusinessOwner"
+    ]
+   },
+   {
+    "policyDefinitionReferenceId": "Inherit CostCenter tag from the Resource Group if Missing",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ea3f2387-9b95-492a-a190-fcdc54f7b070",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('costcenterTagName')]"
+     }
+    },
+    "groupNames": [
+     "Tag - CostCenter"
+    ]
+   },
+   {
+    "policyDefinitionReferenceId": "Require a numeric pattern for Cost Center Tag on Resource Groups",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/a8b7290b-8363-4333-81d5-041ac3b2c81c/providers/Microsoft.Authorization/policyDefinitions/d1fd46e8-cbab-4149-a63a-278cbf801f4d",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('costcenterTagName')]"
+     },
+     "effectType": {
+      "value": "[parameters('effectType')]"
+     }
+    },
+    "groupNames": [
+     "Tag - CostCenter"
+    ]
+   },
+   {
+    "policyDefinitionReferenceId": "Require a pattern for ServiceNow Tag value on Resource Groups if the Tag exists_1",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/a8b7290b-8363-4333-81d5-041ac3b2c81c/providers/Microsoft.Authorization/policyDefinitions/5befe8e9-3021-4bcc-b35d-018404748462",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('servicenowTagName')]"
+     },
+     "effectType": {
+      "value": "[parameters('effectType')]"
+     }
+    },
+    "groupNames": [
+     "Tag - ServiceNowRequest"
+    ]
+   },
+   {
+    "policyDefinitionReferenceId": "Inherit ServiceNow Tag from the Resource Group if Missing",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ea3f2387-9b95-492a-a190-fcdc54f7b070",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('servicenowTagName')]"
+     }
+    },
+    "groupNames": [
+     "Tag - ServiceNowRequest"
+    ]
+   },
+   {
+    "policyDefinitionReferenceId": "Inherit Application Tag from the Resource Group if Missing",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ea3f2387-9b95-492a-a190-fcdc54f7b070",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('applicationTagName')]"
+     }
+    },
+    "groupNames": [
+     "Tag - Application"
+    ]
+   },
+   {
+    "policyDefinitionReferenceId": "Inherit PmCostCenter Tag from the Resource Group if Missing",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ea3f2387-9b95-492a-a190-fcdc54f7b070",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('projectcostcenterTagName')]"
+     }
+    },
+    "groupNames": [
+     "Tag - PmCostCenter"
+    ]
+   },
+   {
+    "policyDefinitionReferenceId": "Add or Replace Environment Tag on Subscription",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/61a4d60b-7326-440e-8051-9f94394d4dd1",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('environmentTagName')]"
+     },
+     "tagValue": {
+      "value": "[parameters('environmentTagValue')]"
+     }
+    },
+    "groupNames": [
+     "Tag - Environment"
+    ]
+   },
+   {
+    "policyDefinitionReferenceId": "Require a pattern for CIID Tag value on Resource Groups",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/a8b7290b-8363-4333-81d5-041ac3b2c81c/providers/Microsoft.Authorization/policyDefinitions/c62bde75-14db-467c-93a8-d0b173f4127f",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('ciidTagName')]"
+     },
+     "effectType": {
+      "value": "[parameters('effectType')]"
+     }
+    },
+    "groupNames": [
+     "Tag - CIID"
+    ]
+   },
+   {
+    "policyDefinitionReferenceId": "Inherit CIID Tag from the Resource Group if Missing",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ea3f2387-9b95-492a-a190-fcdc54f7b070",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('ciidTagName')]"
+     }
+    },
+    "groupNames": [
+     "Tag - CIID"
+    ]
+   },
+   {
+    "policyDefinitionReferenceId": "Require a numeric value or N/A on Tag value on Resource Groups if Tag exists_1",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/a8b7290b-8363-4333-81d5-041ac3b2c81c/providers/Microsoft.Authorization/policyDefinitions/e594b3ea-f950-44ab-812f-ade17edf5a25",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('projectcostcenterTagName')]"
+     },
+     "effectType": {
+      "value": "[parameters('effectType')]"
+     }
+    },
+    "groupNames": [
+     "Tag - PmCostCenter"
+    ]
+   },
+   {
+    "policyDefinitionReferenceId": "Audit CreatedBy Tag on Resource Groups",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/a8b7290b-8363-4333-81d5-041ac3b2c81c/providers/Microsoft.Authorization/policyDefinitions/06fb0317-7d8b-4abb-8e11-fbd14f00c909",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('createdbyTagName')]"
+     }
+    },
+    "groupNames": [
+     "Tag - CreatedBy"
+    ]
+   },
+   {
+    "policyDefinitionReferenceId": "Audit CreatedBy Tag on Resources",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/a8b7290b-8363-4333-81d5-041ac3b2c81c/providers/Microsoft.Authorization/policyDefinitions/06fb0317-7d8b-4abb-8e11-fbd14f00c935",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('createdbyTagName')]"
+     }
+    },
+    "groupNames": [
+     "Tag - CreatedBy"
+    ]
+   },
+   {
+    "policyDefinitionReferenceId": "Require Application Tag on Resource Groups",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/96670d01-0a4d-4649-9c89-2d3abc0a5025",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('applicationTagName')]"
+     }
+    },
+    "groupNames": [
+     "Tag - Application"
+    ]
+   },
+   {
+    "policyDefinitionReferenceId": "Require Application Tag value on Resource Groups",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/a8b7290b-8363-4333-81d5-041ac3b2c81c/providers/Microsoft.Authorization/policyDefinitions/e38b2d99-97ba-41d4-9268-395966374d32",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('applicationTagName')]"
+     },
+     "effectType": {
+      "value": "[parameters('effectType')]"
+     }
+    },
+    "groupNames": [
+     "Tag - Application"
+    ]
+   },
+   {
+    "policyDefinitionReferenceId": "Add CreatedOnDate Tag when Resources are Created",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/a8b7290b-8363-4333-81d5-041ac3b2c81c/providers/Microsoft.Authorization/policyDefinitions/a6e71173-6e0e-42c3-a1b8-391237d0528c",
+    "parameters": {},
+    "groupNames": [
+     "Tag - CreatedOnDate"
+    ]
+   },
+   {
+    "policyDefinitionReferenceId": "Audit CreatedOnDate Tag on Resources",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/a8b7290b-8363-4333-81d5-041ac3b2c81c/providers/Microsoft.Authorization/policyDefinitions/06fb0317-7d8b-4abb-8e11-fbd14f00c935",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('createdondateTagName')]"
+     }
+    },
+    "groupNames": [
+     "Tag - CreatedOnDate"
+    ]
+   },
+   {
+    "policyDefinitionReferenceId": "Audit CreatedOnDate Tag on Resource Groups",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/a8b7290b-8363-4333-81d5-041ac3b2c81c/providers/Microsoft.Authorization/policyDefinitions/06fb0317-7d8b-4abb-8e11-fbd14f00c909",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('createdondateTagName')]"
+     }
+    },
+    "groupNames": [
+     "Tag - CreatedOnDate"
+    ]
+   }
+  ],
+  "policyDefinitionGroups": [
+   {
+    "name": "Tag - Environment",
+    "description": "This group handles the Environment Tag"
+   },
+   {
+    "name": "Tag - Stakeholder"
+   },
+   {
+    "name": "Tag - BusinessOwner"
+   },
+   {
+    "name": "Tag - CostCenter"
+   },
+   {
+    "name": "Tag - PmCostCenter"
+   },
+   {
+    "name": "Tag - Application"
+   },
+   {
+    "name": "Tag - CIID"
+   },
+   {
+    "name": "Tag - ServiceNowRequest"
+   },
+   {
+    "name": "Tag - CreatedBy"
+   },
+   {
+    "name": "Tag - CreatedOnDate"
+   }
+  ]
+ },
+ "id": "/providers/Microsoft.Management/managementGroups/a8b7290b-8363-4333-81d5-041ac3b2c81c/providers/Microsoft.Authorization/policySetDefinitions/f6451d30adba44ca99e5c540",
+ "type": "Microsoft.Authorization/policySetDefinitions",
+ "name": "f6451d30adba44ca99e5c540"
+}
