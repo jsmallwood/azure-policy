@@ -1,0 +1,59 @@
+{
+ "properties": {
+  "displayName": "Require a pattern for ServiceNow Tag value on Resource Groups if the Tag exists",
+  "policyType": "Custom",
+  "mode": "All",
+  "description": "Enforces a pattern for ServiceNow Tag values on resource groups if the Tag exists.\n\nThe policy can will enforce a pattern for both Requests and Incidents as the value.",
+  "metadata": {
+   "category": "Tags",
+   "createdBy": "0657932d-6322-4410-b062-c9f117e63087",
+   "createdOn": "2021-04-27T19:52:54.3282636Z",
+   "updatedBy": "0657932d-6322-4410-b062-c9f117e63087",
+   "updatedOn": "2021-04-30T13:50:01.5009279Z"
+  },
+  "parameters": {
+   "tagName": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Tag Name",
+     "description": "Name of the tag, such as 'ServiceNowRequest'"
+    }
+   },
+   "effectType": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Effect Type",
+     "description": "Effect Type"
+    }
+   }
+  },
+  "policyRule": {
+   "if": {
+    "allOf": [
+     {
+      "field": "[concat('tags[', parameters('tagName'), ']')]",
+      "exists": "true"
+     },
+     {
+      "field": "[concat('tags[', parameters('tagName'), ']')]",
+      "notLike": "CHG*"
+     },
+     {
+      "field": "[concat('tags[', parameters('tagName'), ']')]",
+      "notLike": "INC*"
+     },
+     {
+      "field": "[concat('tags[', parameters('tagName'), ']')]",
+      "notLike": "RITM*"
+     }
+    ]
+   },
+   "then": {
+    "effect": "[parameters('effectType')]"
+   }
+  }
+ },
+ "id": "/providers/Microsoft.Management/managementGroups/a8b7290b-8363-4333-81d5-041ac3b2c81c/providers/Microsoft.Authorization/policyDefinitions/5befe8e9-3021-4bcc-b35d-018404748462",
+ "type": "Microsoft.Authorization/policyDefinitions",
+ "name": "5befe8e9-3021-4bcc-b35d-018404748462"
+}

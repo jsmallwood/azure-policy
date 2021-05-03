@@ -1,0 +1,576 @@
+{
+ "properties": {
+  "displayName": "Enforce naming convention for a specific resource type",
+  "policyType": "Custom",
+  "mode": "All",
+  "description": "This policy enforces a naming pattern a specific resource type.",
+  "metadata": {
+   "category": "Naming convention",
+   "createdBy": "d1c06f51-82a8-44e8-b35e-01a428a9c890",
+   "createdOn": "2021-03-15T18:51:15.7536977Z",
+   "updatedBy": null,
+   "updatedOn": null
+  },
+  "parameters": {
+   "resourceType": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Resource type",
+     "description": "Resource type to enforce naming pattern.",
+     "strongType": "resourceTypes"
+    }
+   },
+   "resourceAbbreviation": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Resource type abbreviation",
+     "description": "A short name for Azure resource type to use in resource names"
+    }
+   }
+  },
+  "policyRule": {
+   "if": {
+    "allOf": [
+     {
+      "field": "type",
+      "equals": "[parameters('resourceType')]"
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('..-', parameters('resourceAbbreviation'))]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('..-', parameters('resourceAbbreviation'), '-.')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('..-', parameters('resourceAbbreviation'), '-..')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('..-', parameters('resourceAbbreviation'), '-...')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('..-', parameters('resourceAbbreviation'), '-....')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('..-', parameters('resourceAbbreviation'), '-.....')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('..-', parameters('resourceAbbreviation'), '-.............')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('..-', parameters('resourceAbbreviation'), '-.............................')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('...-', parameters('resourceAbbreviation'))]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('...-', parameters('resourceAbbreviation'), '-.')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('...-', parameters('resourceAbbreviation'), '-..')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('...-', parameters('resourceAbbreviation'), '-...')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('...-', parameters('resourceAbbreviation'), '-....')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('...-', parameters('resourceAbbreviation'), '-.....')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('...-', parameters('resourceAbbreviation'), '-.............')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('...-', parameters('resourceAbbreviation'), '-.............................')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('....-', parameters('resourceAbbreviation'))]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('....-', parameters('resourceAbbreviation'), '-.')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('....-', parameters('resourceAbbreviation'), '-..')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('....-', parameters('resourceAbbreviation'), '-...')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('....-', parameters('resourceAbbreviation'), '-....')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('....-', parameters('resourceAbbreviation'), '-.....')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('....-', parameters('resourceAbbreviation'), '-.............')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('....-', parameters('resourceAbbreviation'), '-.............................')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('.....-', parameters('resourceAbbreviation'))]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('.....-', parameters('resourceAbbreviation'), '-.')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('.....-', parameters('resourceAbbreviation'), '-..')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('.....-', parameters('resourceAbbreviation'), '-...')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('.....-', parameters('resourceAbbreviation'), '-....')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('.....-', parameters('resourceAbbreviation'), '-.....')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('.....-', parameters('resourceAbbreviation'), '-.............')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('.....-', parameters('resourceAbbreviation'), '-.............................')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('......-', parameters('resourceAbbreviation'))]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('......-', parameters('resourceAbbreviation'), '-.')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('......-', parameters('resourceAbbreviation'), '-..')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('......-', parameters('resourceAbbreviation'), '-...')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('......-', parameters('resourceAbbreviation'), '-....')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('......-', parameters('resourceAbbreviation'), '-.....')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('......-', parameters('resourceAbbreviation'), '-.............')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('......-', parameters('resourceAbbreviation'), '-.............................')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('.......-', parameters('resourceAbbreviation'))]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('.......-', parameters('resourceAbbreviation'), '-.')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('.......-', parameters('resourceAbbreviation'), '-..')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('.......-', parameters('resourceAbbreviation'), '-...')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('.......-', parameters('resourceAbbreviation'), '-....')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('.......-', parameters('resourceAbbreviation'), '-.....')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('.......-', parameters('resourceAbbreviation'), '-.............')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('.......-', parameters('resourceAbbreviation'), '-.............................')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('........-', parameters('resourceAbbreviation'))]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('........-', parameters('resourceAbbreviation'), '-.')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('........-', parameters('resourceAbbreviation'), '-..')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('........-', parameters('resourceAbbreviation'), '-...')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('........-', parameters('resourceAbbreviation'), '-....')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('........-', parameters('resourceAbbreviation'), '-.....')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('........-', parameters('resourceAbbreviation'), '-.............')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('........-', parameters('resourceAbbreviation'), '-.............................')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('.........-', parameters('resourceAbbreviation'))]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('.........-', parameters('resourceAbbreviation'), '-.')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('.........-', parameters('resourceAbbreviation'), '-..')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('.........-', parameters('resourceAbbreviation'), '-...')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('.........-', parameters('resourceAbbreviation'), '-....')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('.........-', parameters('resourceAbbreviation'), '-.....')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('.........-', parameters('resourceAbbreviation'), '-.............')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('.........-', parameters('resourceAbbreviation'), '-.............................')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('..........-', parameters('resourceAbbreviation'))]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('..........-', parameters('resourceAbbreviation'), '-.')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('..........-', parameters('resourceAbbreviation'), '-..')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('..........-', parameters('resourceAbbreviation'), '-...')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('..........-', parameters('resourceAbbreviation'), '-....')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('..........-', parameters('resourceAbbreviation'), '-.....')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('..........-', parameters('resourceAbbreviation'), '-.............')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('..........-', parameters('resourceAbbreviation'), '-.............................')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('...........-', parameters('resourceAbbreviation'))]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('...........-', parameters('resourceAbbreviation'), '-.')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('...........-', parameters('resourceAbbreviation'), '-..')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('...........-', parameters('resourceAbbreviation'), '-...')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('...........-', parameters('resourceAbbreviation'), '-....')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('...........-', parameters('resourceAbbreviation'), '-.....')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('...........-', parameters('resourceAbbreviation'), '-.............')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('...........-', parameters('resourceAbbreviation'), '-.............................')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('............-', parameters('resourceAbbreviation'))]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('............-', parameters('resourceAbbreviation'), '-.')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('............-', parameters('resourceAbbreviation'), '-..')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('............-', parameters('resourceAbbreviation'), '-...')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('............-', parameters('resourceAbbreviation'), '-....')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('............-', parameters('resourceAbbreviation'), '-.....')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('............-', parameters('resourceAbbreviation'), '-.............')]"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "[concat('............-', parameters('resourceAbbreviation'), '-.............................')]"
+      }
+     }
+    ]
+   },
+   "then": {
+    "effect": "deny"
+   }
+  }
+ },
+ "id": "/subscriptions/9333ff49-e576-423a-982f-545d2eb5ed65/providers/Microsoft.Authorization/policyDefinitions/enforce-naming-for-resource-pd",
+ "type": "Microsoft.Authorization/policyDefinitions",
+ "name": "enforce-naming-for-resource-pd"
+}

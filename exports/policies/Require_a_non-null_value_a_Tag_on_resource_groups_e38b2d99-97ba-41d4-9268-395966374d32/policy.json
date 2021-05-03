@@ -1,0 +1,59 @@
+{
+ "properties": {
+  "displayName": "Require a non-null value a Tag on resource groups",
+  "policyType": "Custom",
+  "mode": "All",
+  "description": "Enforces a required tag and its value on resource groups.",
+  "metadata": {
+   "category": "Tags",
+   "createdBy": "0657932d-6322-4410-b062-c9f117e63087",
+   "createdOn": "2021-04-27T19:34:05.590051Z",
+   "updatedBy": "0657932d-6322-4410-b062-c9f117e63087",
+   "updatedOn": "2021-04-30T14:28:08.5960336Z"
+  },
+  "parameters": {
+   "tagName": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Tag Name",
+     "description": "Name of the tag, such as 'environment'"
+    }
+   },
+   "effectType": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Effect Type",
+     "description": "Effect Type"
+    }
+   }
+  },
+  "policyRule": {
+   "if": {
+    "allOf": [
+     {
+      "field": "type",
+      "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+     },
+     {
+      "anyOf": [
+       {
+        "field": "[concat('tags[', parameters('tagName'), ']')]",
+        "exists": "false"
+       },
+       {
+        "field": "[concat('tags[', parameters('tagName'), ']')]",
+        "equals": ""
+       }
+      ]
+     }
+    ]
+   },
+   "then": {
+    "effect": "[parameters('effectType')]"
+   }
+  }
+ },
+ "id": "/providers/Microsoft.Management/managementGroups/a8b7290b-8363-4333-81d5-041ac3b2c81c/providers/Microsoft.Authorization/policyDefinitions/e38b2d99-97ba-41d4-9268-395966374d32",
+ "type": "Microsoft.Authorization/policyDefinitions",
+ "name": "e38b2d99-97ba-41d4-9268-395966374d32"
+}

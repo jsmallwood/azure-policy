@@ -1,0 +1,71 @@
+{
+ "properties": {
+  "displayName": "Require a numeric value or N/A on Tag value on Resource Groups if Tag exists",
+  "policyType": "Custom",
+  "mode": "All",
+  "description": "Enforces a non-null value on a optional tag if it exists on a resource group.",
+  "metadata": {
+   "category": "Tags",
+   "createdBy": "0657932d-6322-4410-b062-c9f117e63087",
+   "createdOn": "2021-04-30T13:14:15.4035762Z",
+   "updatedBy": "0657932d-6322-4410-b062-c9f117e63087",
+   "updatedOn": "2021-04-30T13:20:55.2431877Z"
+  },
+  "parameters": {
+   "tagName": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Tag Name",
+     "description": "Name of the tag, such as 'environment'"
+    }
+   },
+   "effectType": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Effect Type",
+     "description": "Effect Type"
+    }
+   }
+  },
+  "policyRule": {
+   "if": {
+    "allOf": [
+     {
+      "field": "type",
+      "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+     },
+     {
+      "field": "[concat('tags[', parameters('tagName'), ']')]",
+      "exists": "true"
+     },
+     {
+      "field": "[concat('tags[', parameters('tagName'), ']')]",
+      "notEquals": "N/A"
+     },
+     {
+      "field": "[concat('tags[', parameters('tagName'), ']')]",
+      "notMatch": "####"
+     },
+     {
+      "field": "[concat('tags[', parameters('tagName'), ']')]",
+      "notMatch": "#####"
+     },
+     {
+      "field": "[concat('tags[', parameters('tagName'), ']')]",
+      "notMatch": "######"
+     },
+     {
+      "field": "[concat('tags[', parameters('tagName'), ']')]",
+      "notMatch": "#######"
+     }
+    ]
+   },
+   "then": {
+    "effect": "[parameters('effectType')]"
+   }
+  }
+ },
+ "id": "/providers/Microsoft.Management/managementGroups/a8b7290b-8363-4333-81d5-041ac3b2c81c/providers/Microsoft.Authorization/policyDefinitions/e594b3ea-f950-44ab-812f-ade17edf5a25",
+ "type": "Microsoft.Authorization/policyDefinitions",
+ "name": "e594b3ea-f950-44ab-812f-ade17edf5a25"
+}

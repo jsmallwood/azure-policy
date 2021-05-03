@@ -1,0 +1,44 @@
+{
+ "properties": {
+  "displayName": "Add Tag with the created on to Resources when created.",
+  "policyType": "Custom",
+  "mode": "All",
+  "metadata": {
+   "createdBy": "0657932d-6322-4410-b062-c9f117e63087",
+   "createdOn": "2021-04-30T13:03:42.0818921Z",
+   "updatedBy": null,
+   "updatedOn": null
+  },
+  "parameters": {
+   "tagName": {
+    "type": "String",
+    "metadata": {
+     "displayName": "tagName"
+    },
+    "defaultValue": "CreatedOnDate"
+   }
+  },
+  "policyRule": {
+   "if": {
+    "allOf": [
+     {
+      "field": "[concat('tags[', parameters('tagName'), ']')]",
+      "exists": "false"
+     }
+    ]
+   },
+   "then": {
+    "effect": "append",
+    "details": [
+     {
+      "field": "[concat('tags[', parameters('tagName'), ']')]",
+      "value": "[concat(substring(utcNow(),5,2), '/', substring(utcNow(),8,2), '/', substring(utcNow(),0,4))]"
+     }
+    ]
+   }
+  }
+ },
+ "id": "/providers/Microsoft.Management/managementGroups/a8b7290b-8363-4333-81d5-041ac3b2c81c/providers/Microsoft.Authorization/policyDefinitions/a6e71173-6e0e-42c3-a1b8-391237d0528c",
+ "type": "Microsoft.Authorization/policyDefinitions",
+ "name": "a6e71173-6e0e-42c3-a1b8-391237d0528c"
+}

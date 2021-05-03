@@ -1,0 +1,44 @@
+{
+ "properties": {
+  "displayName": "Require a tag and non-null value on resources",
+  "policyType": "Custom",
+  "mode": "Indexed",
+  "description": "Enforces a required tag and its value. Does not apply to resource groups.",
+  "metadata": {
+   "category": "Tags",
+   "createdBy": "d1c06f51-82a8-44e8-b35e-01a428a9c890",
+   "createdOn": "2020-12-09T19:29:43.173065Z",
+   "updatedBy": "d1c06f51-82a8-44e8-b35e-01a428a9c890",
+   "updatedOn": "2021-03-15T19:06:44.0509596Z"
+  },
+  "parameters": {
+   "tagName": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Tag Name",
+     "description": "Name of the tag, such as 'environment'"
+    }
+   }
+  },
+  "policyRule": {
+   "if": {
+    "anyOf": [
+     {
+      "field": "[concat('tags[', parameters('tagName'), ']')]",
+      "exists": false
+     },
+     {
+      "field": "[concat('tags[', parameters('tagName'), ']')]",
+      "equals": ""
+     }
+    ]
+   },
+   "then": {
+    "effect": "audit"
+   }
+  }
+ },
+ "id": "/subscriptions/9333ff49-e576-423a-982f-545d2eb5ed65/providers/Microsoft.Authorization/policyDefinitions/1439ed39-ab6b-48fd-bf84-c14ddd2e9dc4",
+ "type": "Microsoft.Authorization/policyDefinitions",
+ "name": "1439ed39-ab6b-48fd-bf84-c14ddd2e9dc4"
+}

@@ -1,0 +1,76 @@
+name: manage-azure-policy-375b5dc5
+on:
+  workflow_dispatch:
+    inputs:
+      remarks:
+        description: 'Reason for triggering the workflow run'
+        required: false
+        default: 'Updating Azure Policies'
+
+
+## Uncomment the following if you wish to automatically trigger workflow run with every commit
+#
+#  push:
+#    paths:
+#      - 'exports/initiatives/CUSTOM_-_Tag_Initiative_f6451d30adba44ca99e5c540/**'
+#      - 'exports/policies/Audit_a_tag_on_resource_groups_06fb0317-7d8b-4abb-8e11-fbd14f00c909/**'
+#      - 'exports/policies/Audit_a_tag_on_resources_06fb0317-7d8b-4abb-8e11-fbd14f00c935/**'
+#      - 'exports/policies/Require_a_pattern_for_CIID_Tag_value_on_Resource_Groups_if_the_Tag_exists_27a6f80b-e83b-49bc-afc7-49dafff9ce64/**'
+#      - 'exports/policies/Require_a_tag_and_value_is_email_pattern_on_resources_2c9aaebe-f053-4610-8897-9b4788c926fb/**'
+#      - 'exports/policies/Require_a_numeric_pattern_as_a_Tag_Value_on_Resources_32cc26ed-72c2-488c-a283-ecaf6652ff8e/**'
+#      - 'exports/policies/Require_a_numeric_pattern_as_a_Tag_Value_on_Resource_Groups_if_Tag_Exists_383c7c17-ee5e-4347-91de-a013fc772e37/**'
+#      - 'exports/policies/Require_a_pattern_for_ServiceNow_Tag_value_on_Resource_Groups_if_the_Tag_exists_5befe8e9-3021-4bcc-b35d-018404748462/**'
+#      - 'exports/policies/Require_an_e-mail_address_as_Tag_Value_on_Resources_6119c8c2-0691-403d-930d-405423aee34a/**'
+#      - 'exports/policies/Require_an_e-mail_address_as_Tag_Value_on_Resource_Groups_86441d64-7a22-4949-946b-cdb591b1223f/**'
+#      - 'exports/policies/Add_Tag_with_the_created_on_to_Resources_when_created._a6e71173-6e0e-42c3-a1b8-391237d0528c/**'
+#      - 'exports/policies/Require_a_tag_and_value_is_email_pattern_on_resource_groups_a7c48f7a-fe50-479d-bdc7-e34d1965bd2b/**'
+#      - 'exports/policies/Require_a_text_pattern_on_Tag_value_on_Resource_Groups_aadc2ba3-df72-4e59-ab75-0f54a0900ffe/**'
+#      - 'exports/policies/Add_a_Tag_CreatedOnDate_when_Resources_are_created_AddCreatedOnDateTag/**'
+#      - 'exports/policies/Require_a_pattern_for_CIID_Tag_value_on_Resource_Groups_c62bde75-14db-467c-93a8-d0b173f4127f/**'
+#      - 'exports/policies/Require_a_numeric_pattern_as_a_Tag_Value_on_Resource_Groups_d1fd46e8-cbab-4149-a63a-278cbf801f4d/**'
+#      - 'exports/policies/Require_a_non-null_value_a_Tag_on_resource_groups_e38b2d99-97ba-41d4-9268-395966374d32/**'
+#      - 'exports/policies/Require_a_numeric_value_or_N/A_on_Tag_value_on_Resource_Groups_if_Tag_exists_e594b3ea-f950-44ab-812f-ade17edf5a25/**'
+#      - 'exports/policies/Require_a_non-null_value_a_Tag_on_Resource_Groups_if_Tag_exists_f05a095f-cae1-42e8-bf90-a8fbceb5c2d0/**'
+#      - 'exports/policies/Require_a_tag_and_non-null_value_on_resources_1439ed39-ab6b-48fd-bf84-c14ddd2e9dc4/**'
+#      - 'exports/policies/Add_a_Tag_CreatedOnDate_when_Resources_are_created_AddCreatedOnDateTag/**'
+#      - 'exports/policies/Enforce_naming_convention_for_resource_groups_enforce-naming-for-resource-groups-pd/**'
+#      - 'exports/policies/Enforce_naming_convention_for_a_specific_resource_type_enforce-naming-for-resource-pd/**'
+#      - .github/workflows/manage-azure-policy-375b5dc5.yml
+jobs:
+  apply-azure-policy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS_375b5dc5}}
+        allow-no-subscriptions: true
+    - name: Create or Update Azure Policies
+      uses: azure/manage-azure-policy@v0
+      with:
+        paths: |
+          exports/initiatives/CUSTOM_-_Tag_Initiative_f6451d30adba44ca99e5c540/**
+          exports/policies/Audit_a_tag_on_resource_groups_06fb0317-7d8b-4abb-8e11-fbd14f00c909/**
+          exports/policies/Audit_a_tag_on_resources_06fb0317-7d8b-4abb-8e11-fbd14f00c935/**
+          exports/policies/Require_a_pattern_for_CIID_Tag_value_on_Resource_Groups_if_the_Tag_exists_27a6f80b-e83b-49bc-afc7-49dafff9ce64/**
+          exports/policies/Require_a_tag_and_value_is_email_pattern_on_resources_2c9aaebe-f053-4610-8897-9b4788c926fb/**
+          exports/policies/Require_a_numeric_pattern_as_a_Tag_Value_on_Resources_32cc26ed-72c2-488c-a283-ecaf6652ff8e/**
+          exports/policies/Require_a_numeric_pattern_as_a_Tag_Value_on_Resource_Groups_if_Tag_Exists_383c7c17-ee5e-4347-91de-a013fc772e37/**
+          exports/policies/Require_a_pattern_for_ServiceNow_Tag_value_on_Resource_Groups_if_the_Tag_exists_5befe8e9-3021-4bcc-b35d-018404748462/**
+          exports/policies/Require_an_e-mail_address_as_Tag_Value_on_Resources_6119c8c2-0691-403d-930d-405423aee34a/**
+          exports/policies/Require_an_e-mail_address_as_Tag_Value_on_Resource_Groups_86441d64-7a22-4949-946b-cdb591b1223f/**
+          exports/policies/Add_Tag_with_the_created_on_to_Resources_when_created._a6e71173-6e0e-42c3-a1b8-391237d0528c/**
+          exports/policies/Require_a_tag_and_value_is_email_pattern_on_resource_groups_a7c48f7a-fe50-479d-bdc7-e34d1965bd2b/**
+          exports/policies/Require_a_text_pattern_on_Tag_value_on_Resource_Groups_aadc2ba3-df72-4e59-ab75-0f54a0900ffe/**
+          exports/policies/Add_a_Tag_CreatedOnDate_when_Resources_are_created_AddCreatedOnDateTag/**
+          exports/policies/Require_a_pattern_for_CIID_Tag_value_on_Resource_Groups_c62bde75-14db-467c-93a8-d0b173f4127f/**
+          exports/policies/Require_a_numeric_pattern_as_a_Tag_Value_on_Resource_Groups_d1fd46e8-cbab-4149-a63a-278cbf801f4d/**
+          exports/policies/Require_a_non-null_value_a_Tag_on_resource_groups_e38b2d99-97ba-41d4-9268-395966374d32/**
+          exports/policies/Require_a_numeric_value_or_N/A_on_Tag_value_on_Resource_Groups_if_Tag_exists_e594b3ea-f950-44ab-812f-ade17edf5a25/**
+          exports/policies/Require_a_non-null_value_a_Tag_on_Resource_Groups_if_Tag_exists_f05a095f-cae1-42e8-bf90-a8fbceb5c2d0/**
+          exports/policies/Require_a_tag_and_non-null_value_on_resources_1439ed39-ab6b-48fd-bf84-c14ddd2e9dc4/**
+          exports/policies/Add_a_Tag_CreatedOnDate_when_Resources_are_created_AddCreatedOnDateTag/**
+          exports/policies/Enforce_naming_convention_for_resource_groups_enforce-naming-for-resource-groups-pd/**
+          exports/policies/Enforce_naming_convention_for_a_specific_resource_type_enforce-naming-for-resource-pd/**

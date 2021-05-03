@@ -1,0 +1,559 @@
+{
+ "properties": {
+  "displayName": "Enforce naming convention for resource groups",
+  "policyType": "Custom",
+  "mode": "All",
+  "description": "This policy enforces a naming pattern for resource groups.",
+  "metadata": {
+   "category": "Naming convention",
+   "createdBy": "d1c06f51-82a8-44e8-b35e-01a428a9c890",
+   "createdOn": "2021-03-15T18:51:14.6921318Z",
+   "updatedBy": null,
+   "updatedOn": null
+  },
+  "policyRule": {
+   "if": {
+    "allOf": [
+     {
+      "field": "type",
+      "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "..-rg"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "..-rg-."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "..-rg-.."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "..-rg-..."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "..-rg-...."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "..-rg-....."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "..-rg-............."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "..-rg-............................."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "...-rg"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "...-rg-."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "...-rg-.."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "...-rg-..."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "...-rg-...."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "...-rg-....."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "...-rg-............."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "...-rg-............................."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "....-rg"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "....-rg-."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "....-rg-.."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "....-rg-..."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "....-rg-...."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "....-rg-....."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "....-rg-............."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "....-rg-............................."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": ".....-rg"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": ".....-rg-."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": ".....-rg-.."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": ".....-rg-..."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": ".....-rg-...."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": ".....-rg-....."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": ".....-rg-............."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": ".....-rg-............................."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "......-rg"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "......-rg-."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "......-rg-.."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "......-rg-..."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "......-rg-...."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "......-rg-....."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "......-rg-............."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "......-rg-............................."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": ".......-rg"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": ".......-rg-."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": ".......-rg-.."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": ".......-rg-..."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": ".......-rg-...."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": ".......-rg-....."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": ".......-rg-............."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": ".......-rg-............................."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "........-rg"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "........-rg-."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "........-rg-.."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "........-rg-..."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "........-rg-...."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "........-rg-....."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "........-rg-............."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "........-rg-............................."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": ".........-rg"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": ".........-rg-."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": ".........-rg-.."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": ".........-rg-..."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": ".........-rg-...."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": ".........-rg-....."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": ".........-rg-............."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": ".........-rg-............................."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "..........-rg"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "..........-rg-."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "..........-rg-.."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "..........-rg-..."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "..........-rg-...."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "..........-rg-....."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "..........-rg-............."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "..........-rg-............................."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "...........-rg"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "...........-rg-."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "...........-rg-.."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "...........-rg-..."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "...........-rg-...."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "...........-rg-....."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "...........-rg-............."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "...........-rg-............................."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "............-rg"
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "............-rg-."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "............-rg-.."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "............-rg-..."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "............-rg-...."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "............-rg-....."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "............-rg-............."
+      }
+     },
+     {
+      "not": {
+       "field": "name",
+       "match": "............-rg-............................."
+      }
+     }
+    ]
+   },
+   "then": {
+    "effect": "deny"
+   }
+  }
+ },
+ "id": "/subscriptions/9333ff49-e576-423a-982f-545d2eb5ed65/providers/Microsoft.Authorization/policyDefinitions/enforce-naming-for-resource-groups-pd",
+ "type": "Microsoft.Authorization/policyDefinitions",
+ "name": "enforce-naming-for-resource-groups-pd"
+}
